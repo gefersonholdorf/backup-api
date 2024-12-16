@@ -7,6 +7,8 @@ import { BackupEntity } from './backup/entity/backup.entity';
 import { ConfigModule } from '@nestjs/config';
 import { ScheduleModule } from '@nestjs/schedule';
 import { BackupService } from './backup/backup.service';
+import { NotificationModule } from './notification/notification.module';
+import { NotificationEntity } from './notification/entity/notification.entity';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -21,10 +23,11 @@ import { BackupService } from './backup/backup.service';
     username: `${process.env.BD_USER}`,
     password: `${process.env.BD_PASSWORD}`,
     database: `${process.env.BD_DATABASE}`,
-    entities: [BackupEntity],
+    entities: [BackupEntity, NotificationEntity],
     synchronize: false,
   }),
   BackupModule,
+  NotificationModule,
   ScheduleModule.forRoot()
   ],
   controllers: [AppController],

@@ -7,6 +7,7 @@ async function bootstrap() {
   console.log(`Aplicação rodando na porta ${port}`)
   console.log(process.env.BD_HOST);
   const app = await NestFactory.create(AppModule);
+  app.enableCors()
   await app.listen(port);
   console.log(`Aplicação rodando na porta ${port}`)
 }
