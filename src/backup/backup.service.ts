@@ -19,7 +19,9 @@ export class BackupService {
     private dateActual = this.dataFormat(new Date())
 
     private readonly nameSystemArquives = [
-        `diamante_${this.dateActual}.json`,
+        `diamante_george_${this.dateActual}.json`,
+        `diamante_orben_${this.dateActual}.json`,
+        `diamante_agenol_${this.dateActual}.json`,
         `bot-george_${this.dateActual}.json`,
         `DOESC_${this.dateActual}.json`,
         `biller-gov_${this.dateActual}.json`,
@@ -50,7 +52,7 @@ export class BackupService {
 
                     const isInsert = await this.verifyInsert(name, 0)
                     if (isInsert) {
-                        return
+                        continue
                     }
 
                     const nameFormat = name.toUpperCase()
